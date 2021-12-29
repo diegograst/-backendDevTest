@@ -3,6 +3,7 @@ package es.diegogr.similarProducts.service.impl;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 import org.springframework.util.StringUtils;
@@ -19,6 +20,7 @@ public class ProductServiceImpl implements ProductService {
 	@Autowired
 	private ProductClientMock productClientMock;
 
+	@Cacheable(cacheNames = "similarProducts")
 	@Override
 	public Optional<SimilarProducts> getProductSimilar(String productId) {
 
